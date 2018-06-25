@@ -307,3 +307,9 @@ Cope mappings:
 Just do following:
 * Remove `~/.vim_runtime`
 * Remove any lines that reference `.vim_runtime` in your `~/.vimrc`
+
+
+## Make self configration for Chear  ^()^
+Just do following:
+* 1) git clone https://github.com/chear/selfvimrc.git  ~/.vim_runtime
+* 2) sh ~/.vim_runtime/install_chear_vimrc.sh 
