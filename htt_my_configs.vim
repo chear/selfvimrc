@@ -61,3 +61,8 @@ set completeopt-=preview
 let g:airline_powerline_fonts = 1 
 
 
+
+"Plugin of 'LocationList', F11 mapping to close LocationList window.
+nmap <F11> :windo lcl\|ccl<cr>
+
+
