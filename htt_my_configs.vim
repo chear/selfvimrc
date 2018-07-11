@@ -62,7 +62,13 @@ let g:airline_powerline_fonts = 1
 
 
 
-"Plugin of 'LocationList', F11 mapping to close LocationList window.
-nmap <F11> :windo lcl\|ccl<cr>
 
+"Plugin of 'LocationList', F11 mapping to close LocationList window.
+nmap <F9> :windo lcl\|ccl<cr>
+
+
+
+"Plugin of vim-hsftp
+nmap <F10> :Hupload<cr>
+nmap <F11> :Hdownload<cr>
 
