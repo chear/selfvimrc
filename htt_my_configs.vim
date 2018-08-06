@@ -63,12 +63,39 @@ let g:airline_powerline_fonts = 1
 
 
 
-"Plugin of 'LocationList', F11 mapping to close LocationList window.
+"Plug of vim-hsftp, path at : ~/.vim_runtime/vim-hsftp.vim
+"nmap <F10> :Hupload<cr>
+"nmap <F11> :Hdownload<cr>
+
+
+
+
+"Mapping 'F9' to close windows both 'location list' and 'quckfix', ccl means Close the quickfix window , lcl means to close window showing the location list.
 nmap <F9> :windo lcl\|ccl<cr>
+""Mapping 'ctrl' + 'Up' to switch up window
+"nmap <C-Up> :<C-w-k><cr>
+""Mapping 'ctrl' + 'Down' to switch down  window
+"nmap <C-Down> :<C-w-j><cr>
+""Mapping 'ctrl' + 'Up' to switch right window
+"nmap <C-Right> :<C-w-h><cr>
+""Mapping 'ctrl' + 'Down' to switch left window
+"nmap <C-Left> :<C-w-l><cr>
+""Mapping 'F12' to show the history of vim command
+"nmap <F12> :q:<cr>
+"
 
-
-
-"Plugin of vim-hsftp
-nmap <F10> :Hupload<cr>
-nmap <F11> :Hdownload<cr>
-
+"Display the shell result in vim window
+function! s:ExecuteInShell(command)
+    let command = join(map(split(a:command), 'expand(v:val)'))
+    let winnr = bufwinnr('^' . command . '$')
+    silent! execute  winnr < 0 ? 'botright vnew ' . fnameescape(command) : winnr . 'wincmd w'
+    setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap number
+    echo 'Execute ' . command . '...'
+    silent! execute 'silent %!'. command
+    silent! execute 'resize '
+    silent! redraw
+    silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
+    silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
+    echo 'Shell command ' . command . ' executed.'
+endfunction
+command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
