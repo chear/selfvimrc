@@ -2,7 +2,6 @@
 " Fantastic Vim Configration
 "
 
-
 "shows line number
 set number
 
@@ -11,6 +10,8 @@ set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8    
 set encoding=utf-8     
 let g:go_version_warning = 0
+
+
 
 
 "Plugin of 'NERDTree' setting
@@ -98,4 +99,4 @@ function! s:ExecuteInShell(command)
     silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
     echo 'Shell command ' . command . ' executed.'
 endfunction
-command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
+command! -complete=shellcmd -nargs=+ S call s:ExecuteInShell(<q-args>)
