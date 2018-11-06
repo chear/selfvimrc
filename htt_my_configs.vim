@@ -14,12 +14,14 @@ let g:go_version_warning = 0
 
 
 
-"Plugin of 'NERDTree' setting
+" F2 to open Plugin of 'NERDTree' setting
 let NERDTreeWinPos='right'
 let NERDTreeWinSize=30
 map <F2> :NERDTreeToggle<CR>
 
 
+" F4 to save doc 
+map <F4> :w <CR>
 
 
 "Plugin of 'ctrlp' setting
@@ -64,7 +66,7 @@ let g:airline_powerline_fonts = 1
 
 
 
-"Plug of vim-hsftp, path at : ~/.vim_runtime/vim-hsftp.vim
+"Plug of vim-hsftp, path at : ~/.vim_runtime/vim-hsftp.vim, configure file '.hsftp' at workspace
 "nmap <F10> :Hupload<cr>
 "nmap <F11> :Hdownload<cr>
 
