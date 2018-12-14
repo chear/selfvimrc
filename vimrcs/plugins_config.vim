@@ -77,7 +77,7 @@ set grepprg=/bin/grep\ -nH
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let g:NERDTreeWinSize=35
@@ -177,3 +177,23 @@ let g:ale_lint_on_enter = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled=0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => taglist plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let Tlist_Inc_Winwidth = 0
+let Tlist_Exit_OnlyWindow = 0
+let Tlist_Auto_Open = 0
+let Tlist_Use_Right_Window = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => SourceExplorer plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:SrcExpl_winHeight = 8
+let g:SrcExpl_refreshTime = 100 "ms
+let g:SrcExpl_jumpKey = "<ENTER>"
+let g:SrcExpl_gobackKey = "<SPACE>"
+let g:SrcExpl_isUpdateTags = 0
+
