@@ -1,7 +1,6 @@
-"
+"---------------------------------------------------
 " Fantastic Vim Configration
-"
-
+"---------------------------------------------------
 "shows line number
 set number
 " c program indent
@@ -138,3 +137,16 @@ nmap <F8> :SrcExplToggle<CR>
 filetype on 
 nmap <F7> :TlistToggle<CR>
 let Tlist_Ctags_Cmd = "/home/chear/bin/ctags"
+
+
+
+"---------------------------------------------------
+" pre-load the configration file 
+"---------------------------------------------------
+function! s:PreloadingConfig()
+"    if filereadable("./.previm")  
+        source .previm
+"    endif
+endfunction
+command! call s:PreloadingConfig()
+

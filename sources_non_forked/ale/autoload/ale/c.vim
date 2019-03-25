@@ -6,7 +6,7 @@ call ale#Set('c_parse_compile_commands', 0)
 let s:sep = has('win32') ? '\' : '/'
 
 " Set just so tests can override it.
-let g:__ale_c_project_filenames = ['.git/HEAD', 'configure', 'Makefile', 'CMakeLists.txt']
+let g:__ale_c_project_filenames = ['.git/HEAD', 'configure', 'Makefile', 'CMakeLists.txt' , 'HMakefile']
 
 function! ale#c#GetBuildDirectory(buffer) abort
     " Don't include build directory for header files, as compile_commands.json
