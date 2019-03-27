@@ -61,13 +61,8 @@ let g:bufExplorerDefaultHelp=0       " Do not show default help.
 let g:bufExplorerShowRelativePath=1  " Show relative paths.
 let g:bufExplorerSortBy='mru'        " Sort by most recently used.
 
-<<<<<<< HEAD
 
 
-=======
-
-
->>>>>>> 705e0b4b4608a7490e72ea589123a14c48b571b4
 "---------------------------------------------------
 " Plugin of 'YCM'(YourComplayMe)
 " 设置跳转到方法/函数定义的快捷键 
