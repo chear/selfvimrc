@@ -132,6 +132,74 @@ nmap <F8> :SrcExplToggle<CR>
 
 
 "---------------------------------------------------
+" convert decimal to hex , Usage bellowing:
+"
+"   :Dec2hex 496        Displays 1f0 (hex equivalent of decimal 496).
+"   :Dec2hex            Converts all decimal numbers to hex in current line.
+"   :'<,>'Dec2hex       Same, for all visually selected text (v, V, or ^V).
+"   :%Dec2hex           Same       , for all lines in buffer.
+"   :Hex2dec 0x1f0      Displays 496 (decimal equival ent of hex 1f0).
+"   :Hex2dec 1f0        Same ('0x' is optional in an argument).
+"   :Hex2dec            Converts all '0x' hex numbers to decimal in current line.
+"   :'<,>'Hex2dec       Same, for all visually selected text (v, V, or ^V).
+"   :%Hex2dec           Same, for all lines in buffer.
+"---------------------------------------------------
+function! s:Dec2hex(line1, line2, arg) range
+    if empty(a:arg)
+        if histget(':', -1) =~# "^'<,'>" && visualmode() !=# 'V'
+            let cmd = 's/\%V\<\d\+\>/\=printf("0x%02x",submatch(0)+0)/g'
+        else
+            let cmd = 's/\<\d\+\>/\=printf("0x%02x",submatch(0)+0)/g'
+        endif
+        try
+            execute a:line1 . ',' . a:line2 . cmd
+        catch
+            echo 'Error: No decimal number found'
+        endtry
+    else
+        echo printf('%x', a:arg + 0)
+    endif
+endfunction
+command! -nargs=? -range Dec2hex call s:Dec2hex(<line1>, <line2>, '<args>')
+
+
+"---------------------------------------------------
+" convert hex to decimal.  
+"---------------------------------------------------
+function! s:Hex2dec(line1, line2, arg) range
+    if empty(a:arg)
+        if histget(':', -1) =~# "^'<,'>" && visualmode() !=# 'V'
+            let cmd = 's/\%V0x\x\+/\=submatch(0)+0/g'
+        else
+            let cmd = 's/0x\x\+/\=submatch(0)+0/g'
+        endif
+        try
+            execute a:line1 . ',' . a:line2 . cmd
+        catch
+            echo 'Error: No hex number starting "0x" found'
+        endtry
+    else
+        echo (a:arg =~? '^0x') ? a:arg + 0 : ('0x'.a:arg) + 0
+    endif
+endfunction
+command! -nargs=? -range Hex2dec call s:Hex2dec(<line1>, <line2>, '<args>')
+
+
+
+
+"---------------------------------------------------
+" pre-load the configration file 
+"---------------------------------------------------
+"function! s:PreloadingConfig()
+""    if filereadable("./.previm")  
+"        source .previm
+""    endif
+"endfunction
+"command! call s:PreloadingConfig()
+
+
+
+"---------------------------------------------------
 " Plugin of 'taglist' setting, F7 to open
 "---------------------------------------------------
 filetype on 
@@ -140,69 +208,5 @@ let Tlist_Ctags_Cmd = "/home/chear/bin/ctags"
 
 
 
-"---------------------------------------------------
-" pre-load the configration file 
-"---------------------------------------------------
-function! s:PreloadingConfig()
-"    if filereadable("./.previm")  
-        source .previm
-"    endif
-endfunction
-command! call s:PreloadingConfig()
 
-
-
-
-"---------------------------------------------------
-" convert decimal to hex , Usage bellowing:
-"
-"   :Dec2hex 496        Displays 1f0 (hex equivalent of decimal 496).
-"   :Dec2hex            Converts all decimal numbers to hex in current line.
-"   :'<,>'Dec2hex       Same, for all visually selected text (v, V, or ^V).
-"   :%Dec2hex           Same       , for all lines in buffer.
-"   :Hex2dec 0x1f0      Displays 496 (decimal equival ent of hex 1f0).
-"   :Hex2dec 1f0        Same ("0x" is optional in an argument).
-"   :Hex2dec            Converts all "0x" hex numbers to decimal in current line.
-"   :'<,>'Hex2dec       Same, for all visually selected text (v, V, or ^V).
-"   :%Hex2dec           Same, for all lines in buffer.
-"---------------------------------------------------
-"function! s:Dec2hex(line1, line2, arg) range
-"    if empty(a:arg)
-"        if histget(':', -1) =~# "^'<,'>" && visualmode() !=# 'V'
-"            let cmd = 's/\%V\<\d\+\>/\=printf("0x%x",submatch(0)+0)/g'
-"        else
-"            let cmd = 's/\<\d\+\>/\=printf("0x%x",submatch(0)+0)/g'
-"        endif
-"        try
-"            execute a:line1 . ',' . a:line2 . cmd
-"        catch
-"            echo 'Error: No decimal number found'
-"        endtry
-"    else
-"        echo printf('%x', a:arg + 0)
-"    endif
-"endfunction
-"command! -nargs=? -range Dec2hex call s:Dec2hex(<line1>, <line2>, '<args>')
-
-
-"---------------------------------------------------
-" convert hex to decimal.  
-"---------------------------------------------------
-"function! s:Hex2dec(line1, line2, arg) range
-"    if empty(a:arg)
-"        if histget(':', -1) =~# "^'<,'>" && visualmode() !=# 'V'
-"            let cmd = 's/\%V0x\x\+/\=submatch(0)+0/g'
-"        else
-"            let cmd = 's/0x\x\+/\=submatch(0)+0/g'
-"        endif
-"        try
-"            execute a:line1 . ',' . a:line2 . cmd
-"        catch
-"            echo 'Error: No hex number starting "0x" found'
-"        endtry
-"    else
-"        echo (a:arg =~? '^0x') ? a:arg + 0 : ('0x'.a:arg) + 0
-"    endif
-"endfunction
-"command! -nargs=? -range Hex2dec call s:Hex2dec(<line1>, <line2>, '<args>')
 
