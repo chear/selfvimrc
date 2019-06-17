@@ -1,0 +1,3 @@
+--langdef=linux{base=C}
+--kinddef-linux=s,syscall,system calls
+--regex-linux=/SYSCALL_DEFINE[0-9]\(([^, )]+)[\),]*/\1/s/

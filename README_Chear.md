@@ -32,3 +32,13 @@ Uploads current folder of current buffer to remote path
 
 ref:
 https://github.com/chear/vim-hsftp
+
+
+## Universal Ctags
+universal-ctags is replacement for exuberant-ctags
+the ctags parser files at ~/.vim_runtime/ctags_parser/ , copy ./ctags_parser/* to  ~/.myctags/* when use it.
+for example
+```
+ctags --options=NONE --options=~/.myctags/linux.ctags --langmap=c:+.h --extras=+q --if0=no -o c_tags -R ;
+
+```

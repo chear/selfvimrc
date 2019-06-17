@@ -1,0 +1,3 @@
+--langdef=hisi{base=C}
+--kinddef-hisi=s,syscall,system calls
+--regex-hisi=/HI_DEF_IPC\(([^, )]+)[\),]*/\1/s/
