@@ -79,6 +79,8 @@ function! H_UploadFile()
   let conf = H_GetConf()
 
   if has_key(conf, 'host')
+    echo 'chear : has been found config file'
+
     let action = printf('put %s %s', conf['localpath'], conf['remotepath'])
     let cmd = printf('expect -c "set timeout 5; spawn sftp -P %s %s@%s; expect \"*assword:\"; send %s\r; expect \"sftp>\"; send \"%s\r\"; expect -re \"100%\"; send \"exit\r\";"', conf['port'], conf['user'], conf['host'], conf['pass'], action)
 
@@ -92,7 +94,7 @@ function! H_UploadFile()
 
     execute '!' . cmd
   else
-    echo 'Could not find .hsftp config file'
+    echo 'chear : Could not find .hsftp config file'
   endif
 endfunction
 
@@ -122,7 +124,7 @@ function! H_UploadFolder()
 
     execute '!' . cmd
   else
-    echo 'Could not find .hsftp config file'
+    echo 'chear: Could not find .hsftp config file'
   endif
 
 endfunction

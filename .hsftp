@@ -1,0 +1,8 @@
+host   172.25.24.80
+user   chear_ftp 
+pass   1234!@#$httt
+port   21
+remote /
+local /
+confirm_download 0
+confirm_upload 1

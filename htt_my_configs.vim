@@ -11,6 +11,17 @@ set hlsearch
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8    
 set encoding=utf-8     
+
+" n  普通模式
+" v  可视模式
+" i 插入模式
+" c 命令行模式
+" h 在帮助文件里，以上所有模式
+" a 以上所有模式
+" r 跳过|lit-enter|提示
+" A 在可是模式下自动选择
+set mouse=n
+
 let g:go_version_warning = 0
 nmap <C-J> <C-W>h
 nmap <C-K> <C-W>j
@@ -90,7 +101,7 @@ let g:airline_powerline_fonts = 1
 " Plug of vim-hsftp, path at : ~/.vim_runtime/vim-hsftp.vim, 
 " configure file '.hsftp' at workspace
 "---------------------------------------------------
-"nmap <F10> :Hupload<cr>
+nmap <F10> :Hupload<cr>
 "nmap <F11> :Hdownload<cr>
 
 
@@ -205,8 +216,5 @@ command! -nargs=? -range Hex2dec call s:Hex2dec(<line1>, <line2>, '<args>')
 filetype on 
 nmap <F7> :TlistToggle<CR>
 let Tlist_Ctags_Cmd = "/home/chear/bin/ctags"
-
-
-
 
 
