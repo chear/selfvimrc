@@ -4,4 +4,8 @@
 
 --langdef=hisi_hal{base=C}
 --kinddef-hisi_hal=s,syscall,system calls
---regex-hisi_hal=/HAL_DECLARE_INTF[0-9]\(([^, )]+)[\),]*/\1/s/
+--regex-hisi_hal=/HAL_DECLARE_INTF[0-9]*\(([^, )]+)[\),]*/\1/s/
+
+--langdef=hisi_hal_1{base=C}
+--kinddef-hisi_hal_1=s,syscall,system calls
+--regex-hisi_hal_1=/HAL_DECLARE_INTF[0-9]*\(( [^, )]+)[\),]*/\1/s/

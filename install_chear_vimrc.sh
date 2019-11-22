@@ -15,4 +15,6 @@ source ~/.vim_runtime/htt_my_configs.vim
 catch
 endtry' > ~/.vimrc
 
+cp ./.quiltrc ~/.quiltrc
+
 echo "Installed the Ultimate Vim and Chear's configuration successfully! Enjoy :-)"
