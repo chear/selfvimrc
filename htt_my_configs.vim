@@ -213,8 +213,8 @@ command! -nargs=? -range Hex2dec call s:Hex2dec(<line1>, <line2>, '<args>')
 "---------------------------------------------------
 " Plugin of 'taglist' setting, F7 to open
 "---------------------------------------------------
-filetype on 
-nmap <F7> :TlistToggle<CR>
-let Tlist_Ctags_Cmd = "/home/chear/bin/ctags"
+"filetype on 
+"nmap <F7> :TlistToggle<CR>
+"let Tlist_Ctags_Cmd = "/home/chear/bin/ctags"
 
-
+source ~/.vim_runtime/ftdetect/Makefile.vim
